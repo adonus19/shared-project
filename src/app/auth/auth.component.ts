@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 // import { RouterExtensions } from 'nativescript-angular/router';
 import { Router } from '@angular/router';
-// import { AuthService } from './auth.service';
+import { AuthService } from './auth.service';
 import { FormService } from '../helpers/form.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
   @ViewChild('passwordEl', { static: true }) passwordEl: ElementRef<any>;
 
   constructor(private router: Router,
-    // private authService: AuthService,
+    private authService: AuthService,
     private formService: FormService) { }
 
   ngOnInit() {
@@ -55,23 +55,23 @@ export class AuthComponent implements OnInit {
     this.passwordControlIsValid = true;
     this.isLoading = true;
     if (this.isLogin) {
-      // this.authService.login(email, password).subscribe(user => {
-      //   this.isLoading = false;
-      //   this.router.navigate(['/challenges']);
-      // },
-      //   err => {
-      //     // console.log(err);
-      //     this.isLoading = false;
-      //   });
+      this.authService.login(email, password).subscribe(user => {
+        this.isLoading = false;
+        // this.router.navigate(['/challenges']);
+      },
+        err => {
+          // console.log(err);
+          this.isLoading = false;
+        });
     } else {
-      // this.authService.signup(email, password).subscribe(user => {
-      //   this.isLoading = false;
-      //   this.router.navigate(['/challenges']);
-      // },
-      //   err => {
-      //     // console.log(err);
-      //     this.isLoading = false;
-      //   });
+      this.authService.signup(email, password).subscribe(user => {
+        this.isLoading = false;
+        // this.router.navigate(['/challenges']);
+      },
+        err => {
+          // console.log(err);
+          this.isLoading = false;
+        });
     }
   }
 

@@ -1,0 +1,42 @@
+<!-- <ListView [items]="challenges" (itemTap)="onItemTap($event)" iosEstimatedRowHeight="65">
+  <ng-template let-challenge="item" let-i="index">
+    <GridLayout rows="40, 20" columns="50, *">
+      <Label [text]="i" row="0" col="0" rowSpan="2"></Label>
+      <Label [text]="challenge" row="0" col="1"></Label>
+      <Label text="Item content row 2" row="1" col="1"></Label>
+    </GridLayout>
+  </ng-template>
+</ListView> -->
+<ns-action-bar title="Current Challenge" [showBackButton]="false">
+  <ActionItem ios.position="right" android.position="actionBar" nsRouterLink="/challenges/replace"
+    pageTransition="slideLeft">
+    <Label ios:class="fa p-5" android:class="fa p-10" android:fonstSize="24" text="&#xf0fe;"></Label>
+  </ActionItem>
+  <ActionItem ios.position="right" android.position="actionBar" nsRouterLink="/challenges/edit"
+    pageTransition="slideLeft" *ngIf="currentChallenge">
+    <Label ios:class="fa p-5" android:class="fa p-10" android:fonstSize="24" text="&#xf044;"></Label>
+  </ActionItem>
+</ns-action-bar>
+<ScrollView>
+  <FlexboxLayout class="page">
+    <StackLayout *ngIf="!currentChallenge">
+      <Label text="No challenge found!"></Label>
+      <Button class="btn btn-primary" text="Create Challenge" [nsRouterLink]="['/challenges/edit']"></Button>
+    </StackLayout>
+    <StackLayout *ngIf="currentChallenge" marginBottom="10" marginTop="10">
+      <Label class="h1 text-center" [text]="currentChallenge.title" width="100%"></Label>
+      <Label class="body text-center" [text]="currentChallenge.description"></Label>
+      <GridLayout *ngIf="currentChallenge" rows="auto,*,*,*,*,*,*" columns="*,*,*,*,*,*,*">
+        <Label class="text-center week-day-label" width="100%" *ngFor="let day of weekDays; let i = index" [text]="day"
+          row="0" [col]="i">
+        </Label>
+        <FlexboxLayout class="day" *ngFor="let day of currentChallenge.days; let i = index" [row]="getRow(i, day)"
+          [col]="day.dayInWeek" (tap)="onChangeStatus(day)"
+          [ngClass]="{'not-settable': !getIsSettable(day.dayInMonth), completed: day.status === 1, failed: day.status === 2}">
+          <Label [text]="day.dayInMonth">
+          </Label>
+        </FlexboxLayout>
+      </GridLayout>
+    </StackLayout>
+  </FlexboxLayout>
+</ScrollView>
