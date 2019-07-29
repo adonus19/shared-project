@@ -3,7 +3,7 @@ import { Subscription } from "rxjs";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
 import { DayModalComponent } from "../day-modal/day-modal.component.tns";
-import { UIService } from "~/app/shared/ui.service";
+import { UIService } from "../../shared/ui.service";
 import { ChallengeService } from "../challenge.service";
 import { Challenge } from "../challenge.model";
 import { Day, DayStatus } from "../day.model";

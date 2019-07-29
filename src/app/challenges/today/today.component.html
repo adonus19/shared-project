@@ -1,11 +1,10 @@
-<ns-action-bar title="Today's Challenge" [showBackButton]="false"></ns-action-bar>
-<FlexboxLayout class="page" *ngIf="!currentDay">
-  <Label text="No challenge found!"></Label>
-  <Button class="btn btn-primary" text="Create Challenge" [nsRouterLink]="['/challenges/replace']"></Button>
-</FlexboxLayout>
-<FlexboxLayout class="page" *ngIf="currentDay">
-  <Label class="h1" [text]="currentDay.date | date"></Label>
+<div class="page" *ngIf="!currentDay">
+  <p>No challenge found!</p>
+  <button class="btn btn-primary" routerLink="/challenges/replace">Create Challenge</button>
+</div>
+<div class="page" *ngIf="currentDay">
+  <h1 class="h1">{{currentDay.date | date}}</h1>
   <ns-challenge-actions (actionSelect)="onActionSelected($event)" [chosen]="getActionName()"
     [startDone]="getActionName() === 'complete' || getActionName() === 'fail'" cancelText="Reset">
   </ns-challenge-actions>
-</FlexboxLayout>
+</div>

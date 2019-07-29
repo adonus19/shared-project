@@ -1,29 +1,27 @@
 /* Add mobile styles for the component here.  */
 @import '../../../theme/colors';
 
-.container {
-  display: flex;
+FlexboxLayout {
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .btn {
-  width: 300px;
-  height: 60px;
+  width: 300;
 }
 
 .btn-success {
   background-color: $success;
   border-color: $success;
-  border-width: 1px;
+  border-width: 1;
   color: white;
 }
 
 .btn-fail {
   background-color: $fail;
   border-color: $fail;
-  border-width: 1px;
+  border-width: 1;
   color: white;
 }
 
@@ -40,8 +38,8 @@
 }
 
 .btn-alt {
-  font-size: 30px;
-  margin-top: 6px;
+  font-size: 30;
+  margin-top: 6;
 }
 
 .animate-btn {
@@ -53,7 +51,7 @@
 
 @keyframes slide-up {
   from {
-    transform: translateY(30px);
+    transform: translateY(30);
   }
   to {
     transform: translateY(0);

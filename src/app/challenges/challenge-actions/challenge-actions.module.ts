@@ -1,11 +1,10 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import { NgModule } from '@angular/core';
 import { ChallengeActionsComponent } from './challenge-actions.component.tns';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [ChallengeActionsComponent],
-  imports: [NativeScriptCommonModule],
-  exports: [ChallengeActionsComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+  imports: [CommonModule],
+  exports: [ChallengeActionsComponent]
 })
 export class ChallengeActionsModule {
 }
