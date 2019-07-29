@@ -1,0 +1,17 @@
+@import "app-variables";
+
+@import '~nativescript-theme-core/scss/index';
+@import '~nativescript-theme-core/scss/platforms/index.android';
+
+@import "app-common";
+
+ActionBar {
+  background: $primary;
+  color: white;
+  // background: lighten($primary, 20);
+}
+
+.btn {
+  background: purple;
+  color: white;
+}
